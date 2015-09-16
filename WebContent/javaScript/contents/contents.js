@@ -1,4 +1,6 @@
 'use strict';
+var asdf="";
+var test= "";
 function serverServiceRouine() {
 	return "Insert Testing....";	
 };
@@ -13,17 +15,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	})
 
 });
-app.controller('ContentsController', [ '$scope', function($scope) {
-	$scope.title = 'My First AngularJS'; //We can communication this way.
-	$scope.contents = [ {
-		title : 'Title',
-		contents : "Contents"
-	}, {
-		title : 'Title1',
-		contents : "Contents1"
-	} ] // we can use array list.
-
+app.controller('ContentsController', [ '$http', '$scope', function($http,$scope) {
+	$scope.title = 'My First AngularJS'; 
+	$scope.contents=[];
+	$http.get('javaScript/json/contentsJson.json').success(function(data){
+		$scope.contents=data.Contents;
+	});
 	// Add a Item to the list
+	
+	
 	$scope.addItem = function() {
 
 		alert(serverServiceRouine());
@@ -38,4 +38,29 @@ app.controller('ContentsController', [ '$scope', function($scope) {
 		$scope.contentsAdder = "";
 
 	};
+
+	$scope.delItem = function(item) { 
+		  var index = $scope.contents.indexOf(item);
+		  $scope.contents.splice(index, 1);s		
+	};
+	$scope.modItem = function(item) { 
+		
+		if($scope.titleAdder !== ""){
+			item.title = $scope.titleAdder;
+		}
+		
+		if($scope.contentsAdder !== ""){
+			item.contents = $scope.contentsAdder;
+		}
+		
+
+			// Clear input fields after push
+			$scope.titleAdder = "";
+			$scope.contentsAdder = "";
+		
+	};
+	
+	
+	
+	
 } ]);

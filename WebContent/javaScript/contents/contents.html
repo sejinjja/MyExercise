@@ -4,8 +4,8 @@
 			<td><b>title:</b> {{item.title}}</td>
 			<td><b>contents:</b> {{item.contents}}</td>
 			<td><b>index:</b> {{$index}}</td>
-			<td><b>Mod:</b> {{$index}}</td>
-			<td><b>Del:</b> {{$index}}</td>
+			<td><button ng-click="modItem(item)">Mod to list</button></td>
+			<td><button ng-click="delItem(item)">Del to list</button></td>
 		</tr>
 	</table>
 	<input value="" type="text" placeholder="Title" ng-model="titleAdder">
