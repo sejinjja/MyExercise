@@ -1,0 +1,15 @@
+<div ng-controller="ContentsController">
+	<table ng-repeat="item in contents">
+		<tr>
+			<td><b>title:</b> {{item.title}}</td>
+			<td><b>contents:</b> {{item.contents}}</td>
+			<td><b>index:</b> {{$index}}</td>
+			<td><b>Mod:</b> {{$index}}</td>
+			<td><b>Del:</b> {{$index}}</td>
+		</tr>
+	</table>
+	<input value="" type="text" placeholder="Title" ng-model="titleAdder">
+	<input value="" type="text" placeholder="Contents"
+		ng-model="contentsAdder">
+	<button ng-click="addItem()">Add to list</button>
+</div>
